@@ -1,0 +1,37 @@
+---
+- name: Install dependencies
+  ansible.builtin.apt:
+    name: "{{ dependencies_packages }}"
+    state: present
+    force: true
+    update_cache: yes
+  register: package_ok
+  retries: 5
+  delay: 2
+  until: package_ok is success
+
+- name: Add an Apt signing key, uses whichever key is at the URL
+  ansible.builtin.apt_key:
+    url: "{{ octopus_gpg_key_url }}"
+    state: present
+
+- name: Add Octopus Repository
+  ansible.builtin.apt_repository:
+    repo: "{{ octopus_apt_repository }}"
+    state: present
+
+- name: Set octopus_cli_version
+  ansible.builtin.set_fact:
+    octopus_cli_package: "{{ octopus_cli_package }}={{ octopus_cli_version }}"
+  when: octopus_cli_version|length > 0
+
+- name: Install Octopus Cli
+  ansible.builtin.apt:
+    name: "{{ octopus_cli_package }}"
+    state: present
+    force: true
+    update_cache: yes
+  register: package_ok
+  retries: 5
+  delay: 2
+  until: package_ok is success

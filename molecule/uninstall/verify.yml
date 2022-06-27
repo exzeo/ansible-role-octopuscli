@@ -1,0 +1,14 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+
+    - name: Execute octo version to capture output
+      command: "octo --version"
+      register: octopus_current_version
+      ignore_errors: yes
+
+    - name: Ensure octo is not installed
+      assert:
+        that:
+          - octopus_current_version.rc != 0

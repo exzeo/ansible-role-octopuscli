@@ -1,0 +1,6 @@
+---
+# Octopus Version to install
+octopus_cli_version: ""
+
+# Toggling this will uninstall from the server
+uninstall: false
