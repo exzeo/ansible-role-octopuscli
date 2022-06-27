@@ -1,0 +1,17 @@
+---
+- name: Remove Octopus Cli
+  ansible.builtin.apt:
+    name: "{{ octopus_cli_package }}"
+    state: absent
+    force: true
+    update_cache: yes
+
+- name: Remove Octopus Repository
+  ansible.builtin.apt_repository:
+    repo: "{{ octopus_apt_repository }}"
+    state: absent
+
+- name: Remove Apt signing key
+  ansible.builtin.apt_key:
+    url: "{{ octopus_gpg_key_url }}"
+    state: absent

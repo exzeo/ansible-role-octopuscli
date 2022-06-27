@@ -1,0 +1,7 @@
+---
+- name: Install
+  hosts: all
+  roles:
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+      vars:
+        octopus_cli_version: "8.0.1"

@@ -1,0 +1,11 @@
+---
+dependencies_packages:
+  - apt-transport-https
+  - ca-certificates
+  - gnupg
+
+# Octopus Package to install
+octopus_cli_package: "octopuscli"
+
+octopus_gpg_key_url: "https://apt.octopus.com/public.key"
+octopus_apt_repository: "deb https://apt.octopus.com/ stable main"

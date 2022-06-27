@@ -1,0 +1,32 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: octopuscli
+  author: exzeo
+  description: Ansible Role for installing Octopus cli
+  company: "Exzeo"
+  license: MIT
+  min_ansible_version: "2.1"
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - xenial
+      - bionic
+      - focal
+      - hirsute
+      - impish
+  - name: Debian
+    versions:
+      - stretch
+      - buster
+      - bullseye
+    
+  galaxy_tags:
+    - octopus
+    - deploy
+    - octopusdeploy
+    - release
+    - tools
+    - cli
