@@ -17,6 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: false
           DEFAULT_BUMP: "patch"
+          INITIAL_VERSION: "1.0.0"
 
       - uses: robertdebock/galaxy-action@1.2.0
         with:
